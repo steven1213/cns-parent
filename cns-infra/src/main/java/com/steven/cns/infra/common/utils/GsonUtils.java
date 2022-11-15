@@ -47,7 +47,7 @@ public final class GsonUtils {
                 //序列化日期格式  "yyyy-MM-dd HH:mm:ss"
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 //自动格式化换行
-//                .setPrettyPrinting()
+                .setPrettyPrinting()
                 //防止特殊字符出现乱码
                 .disableHtmlEscaping()
                 .create();
