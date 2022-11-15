@@ -22,9 +22,9 @@ public enum YesNoEnum implements BaseEnum {
 
     ;
 
-    private Integer code;
+    private final Integer code;
 
-    private String name;
+    private final String name;
 
     YesNoEnum(Integer code, String name) {
         this.code = code;

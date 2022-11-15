@@ -24,14 +24,14 @@ public class PO<T> implements Serializable {
     /**
      * 记录创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", shape = JsonFormat.Shape.ANY, locale = "zh_CN")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", locale = "zh_CN")
     private Date crtTime;
 
 
     /**
      * 记录修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", shape = JsonFormat.Shape.ANY, locale = "zh_CN")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", locale = "zh_CN")
     private Date uptTime;
 
 

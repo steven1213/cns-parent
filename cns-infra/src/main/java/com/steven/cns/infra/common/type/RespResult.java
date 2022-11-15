@@ -20,9 +20,9 @@ public enum RespResult implements BaseEnum {
     FAILURE(-1, "failure."),
     ;
 
-    private Integer code;
+    private final Integer code;
 
-    private String name;
+    private final String name;
 
     RespResult(Integer code, String name) {
         this.code = code;
