@@ -130,15 +130,4 @@ public final class GsonUtils {
         return GSON.fromJson(gsonString, new TypeToken<List<Map<String, String>>>() {
         }.getType());
     }
-
-    /**
-     * 转成map
-     *
-     * @param gsonString -
-     * @return -
-     */
-//    public static <T> Map<String, T> strToMaps(String gsonString) {
-//        return GSON.fromJson(gsonString, new TypeToken<Map<String, T>>() {
-//        }.getType());
-//    }
 }
