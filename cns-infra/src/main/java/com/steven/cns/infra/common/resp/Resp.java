@@ -44,7 +44,7 @@ public class Resp<T> implements Serializable {
     private T data;
 
     public static <T> Resp<T> failure() {
-        return failure(RespResult.FAILURE.getCode(), RespResult.FAILURE.getName());
+        return failure(RespResult.FAILURE.getCode(), RespResult.FAILURE.getValue());
     }
 
     public static <T> Resp<T> failure(Integer code, String msg) {
@@ -56,7 +56,7 @@ public class Resp<T> implements Serializable {
     }
 
     public static <T> Resp<T> success(T data) {
-        return success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getName(), data);
+        return success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getValue(), data);
     }
 
     public static <T> Resp<T> success(Integer code, String msg) {

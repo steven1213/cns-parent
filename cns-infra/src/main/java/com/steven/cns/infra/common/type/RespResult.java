@@ -22,10 +22,10 @@ public enum RespResult implements BaseEnum {
 
     private final Integer code;
 
-    private final String name;
+    private final String value;
 
-    RespResult(Integer code, String name) {
+    RespResult(Integer code, String value) {
         this.code = code;
-        this.name = name;
+        this.value = value;
     }
 }

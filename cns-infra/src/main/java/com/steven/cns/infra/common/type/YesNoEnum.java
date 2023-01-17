@@ -24,10 +24,10 @@ public enum YesNoEnum implements BaseEnum {
 
     private final Integer code;
 
-    private final String name;
+    private final String value;
 
-    YesNoEnum(Integer code, String name) {
+    YesNoEnum(Integer code, String value) {
         this.code = code;
-        this.name = name;
+        this.value = value;
     }
 }

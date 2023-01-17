@@ -18,7 +18,7 @@ public class RespTest {
 
     @Test
     public void testFailure() {
-        Resp<?> resp = Resp.failure(RespResult.FAILURE.getCode(), RespResult.FAILURE.getName());
+        Resp<?> resp = Resp.failure(RespResult.FAILURE.getCode(), RespResult.FAILURE.getValue());
         Assert.assertEquals(RespResult.FAILURE.getCode(), resp.getCode());
     }
 
@@ -36,13 +36,13 @@ public class RespTest {
 
     @Test
     public void testSuccess1() {
-        Resp<Void> resp = Resp.success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getName());
+        Resp<Void> resp = Resp.success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getValue());
         Assert.assertEquals(RespResult.SUCCESS.getCode(), resp.getCode());
     }
 
     @Test
     public void testSuccess2() {
-        Resp<String> resp = Resp.success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getName(), "hello");
+        Resp<String> resp = Resp.success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getValue(), "hello");
         Assert.assertEquals(RespResult.SUCCESS.getCode(), resp.getCode());
     }
 }

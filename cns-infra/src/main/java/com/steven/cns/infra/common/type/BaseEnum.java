@@ -17,5 +17,5 @@ public interface BaseEnum {
      *
      * @return String
      */
-    String getName();
+    String getValue();
 }

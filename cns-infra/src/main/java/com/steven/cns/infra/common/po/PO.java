@@ -1,5 +1,7 @@
 package com.steven.cns.infra.common.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +20,10 @@ import java.util.Date;
 @SuperBuilder
 public class PO<T> implements Serializable {
 
-
+    /**
+     * id.
+     */
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
