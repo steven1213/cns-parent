@@ -10,6 +10,7 @@
         <module>cns-log</module>
         <module>cns-pay</module>
         <module>cns-live</module>
+        <module>cns-im</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -41,6 +42,7 @@
         <cns-live.version>0.0.1-SNAPSHOT</cns-live.version>
         <cns-sdk.version>0.0.1-SNAPSHOT</cns-sdk.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <netty.version>4.1.84.Final</netty.version>
     </properties>
 
 
@@ -51,6 +53,11 @@
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
             <dependency>
                 <groupId>servletapi</groupId>
                 <artifactId>servlet-api</artifactId>

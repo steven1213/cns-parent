@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cns-parent</artifactId>
+        <groupId>com.steven</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cns-im</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cns-im-server</module>
+        <module>cns-im-client</module>
+        <module>cns-im-common</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <cns-im-client.version>0.0.1-SNAPSHOT</cns-im-client.version>
+        <cns-im-server.version>0.0.1-SNAPSHOT</cns-im-server.version>
+        <cns-im-common.version>0.0.1-SNAPSHOT</cns-im-common.version>
+    </properties>
+
+
+    <dependencies>
+
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.steven</groupId>
+                <artifactId>cns-im-client</artifactId>
+                <version>${cns-im-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.steven</groupId>
+                <artifactId>cns-im-server</artifactId>
+                <version>${cns-im-server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.steven</groupId>
+                <artifactId>cns-im-common</artifactId>
+                <version>${cns-im-common.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
