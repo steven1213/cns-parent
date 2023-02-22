@@ -7,7 +7,6 @@ import com.steven.cns.infra.utils.ServletUtils;
 import com.steven.cns.log.OperationLogHandler;
 import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.model.OperationLogModel;
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
@@ -20,6 +19,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
@@ -34,7 +34,7 @@ public class OperationLogAspect {
     /**
      * 是否保存操作日志 默认不保存
      */
-    @Value("${operation.log.save-flag:false}")
+    @Value("${cns.operation.log.save-flag:false}")
     private boolean saveFlag;
 
     @Resource
@@ -92,7 +92,7 @@ public class OperationLogAspect {
 
     private void handleCommonResp(Object o, OperationLogModel logModel) {
         if (Objects.nonNull(o)) {
-            Resp<?> resp = GsonUtils.fromJson(o.toString(), Resp.class);
+            Resp<?> resp = GsonUtils.fromJson(GsonUtils.toJson(o), Resp.class);
             JsonObject json = new JsonObject();
             json.addProperty("code", resp.getCode());
             json.addProperty("msg", resp.getMsg());

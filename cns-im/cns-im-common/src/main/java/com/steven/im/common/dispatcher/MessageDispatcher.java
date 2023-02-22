@@ -6,7 +6,6 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-import javax.annotation.Resource;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,7 +15,7 @@ import java.util.concurrent.Executors;
 @ChannelHandler.Sharable
 public class MessageDispatcher extends SimpleChannelInboundHandler<Invocation> {
     private static Gson gson = new Gson();
-    @Resource
+//    @Resource
     private MessageHandlerContainer messageHandlerContainer;
 
     private final ExecutorService executor = Executors.newFixedThreadPool(200);

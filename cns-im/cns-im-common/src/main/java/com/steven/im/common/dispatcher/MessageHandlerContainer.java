@@ -7,7 +7,7 @@ import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class MessageHandlerContainer implements InitializingBean {
 
     private final Map<CnsIMMsgType, MessageHandler> handlers = new HashMap<>();
 
-    @Resource
+//    @Resource
     private ApplicationContext applicationContext;
 
     @Override
