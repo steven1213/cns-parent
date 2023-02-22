@@ -64,7 +64,7 @@ public class OperationLogAspect {
         if (saveFlag) {
             logHandler.saveOperationLog(logModel);
         }
-        log.info("[Operation-Log]:{}", GsonUtils.toJsonAllowNull(logModel));
+        log.info("[Operation-Log]:\n{}", GsonUtils.prettyPrint(logModel));
     }
 
     private OperationLogModel assembleOperationLog(JoinPoint joinPoint, Exception ex, Object o, OperationLog operationLog) {

@@ -19,6 +19,10 @@ public final class GsonUtils {
         return new GsonBuilder().serializeNulls().create().toJson(object);
     }
 
+    public static <T> String prettyPrint(T object) {
+        return new GsonBuilder().setPrettyPrinting().create().toJson(object);
+    }
+
     public static <T> String toJson(T object) {
         return new GsonBuilder().create().toJson(object);
     }

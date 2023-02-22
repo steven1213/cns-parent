@@ -3,6 +3,7 @@ package com.steven.cns.log.aspect;
 import com.steven.cns.infra.utils.GsonUtils;
 import com.steven.cns.infra.utils.ServletUtils;
 import com.steven.cns.log.annotation.OperationLog;
+import com.steven.cns.log.annotation.ReqLog;
 import com.steven.cns.log.model.ReqLogModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -33,7 +34,7 @@ public class ReqLogAspect {
     @AfterReturning(pointcut = "reqLogPointCut()", returning = "result")
     public void doAfterReturning(JoinPoint joinPoint, Object result) {
         Long begin = System.currentTimeMillis();
-        ReqLogModel reqLogModel = handleOperationLog(joinPoint, null, result);
+        ReqLogModel reqLogModel = handleReqLog(joinPoint, null, result);
         if (Objects.isNull(reqLogModel)) {
             return;
         }
@@ -44,16 +45,16 @@ public class ReqLogAspect {
     @AfterThrowing(pointcut = "reqLogPointCut()", throwing = "ex")
     public void doAfterReturning(JoinPoint joinPoint, Exception ex) {
         Long begin = System.currentTimeMillis();
-        ReqLogModel reqLogModel = handleOperationLog(joinPoint, ex, null);
+        ReqLogModel reqLogModel = handleReqLog(joinPoint, ex, null);
         if (Objects.isNull(reqLogModel)) {
             return;
         }
         Long end = System.currentTimeMillis();
-        log.info("[Req-Log]:耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.toJsonAllowNull(reqLogModel));
+        log.info("[Req-Log]:耗时:[{}]ms,\n请求参数:{}", (end - begin), GsonUtils.prettyPrint(reqLogModel));
     }
 
-    private ReqLogModel handleOperationLog(JoinPoint joinPoint, Exception ex, Object o) {
-        OperationLog operationLog = getAnnotationLog(joinPoint);
+    private ReqLogModel handleReqLog(JoinPoint joinPoint, Exception ex, Object o) {
+        ReqLog operationLog = getAnnotationLog(joinPoint);
         if (null == operationLog) {
             return null;
         }
@@ -67,7 +68,7 @@ public class ReqLogAspect {
 
     private void handleLogResp(Object o, ReqLogModel model) {
         if (Objects.nonNull(o)) {
-            model.setRequestResult(o.toString());
+            model.setRequestResult(GsonUtils.toJson(o));
         }
     }
 
@@ -92,12 +93,12 @@ public class ReqLogAspect {
         logModel.setMethod(method);
     }
 
-    private OperationLog getAnnotationLog(JoinPoint joinPoint) {
+    private ReqLog getAnnotationLog(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
         Method method = methodSignature.getMethod();
         if (null != method) {
-            return method.getAnnotation(OperationLog.class);
+            return method.getAnnotation(ReqLog.class);
         }
         return null;
     }
