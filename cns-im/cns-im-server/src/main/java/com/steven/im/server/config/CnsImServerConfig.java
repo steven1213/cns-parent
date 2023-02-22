@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 @Configuration
 public class CnsImServerConfig {

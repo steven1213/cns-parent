@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 @SpringBootApplication
 public class CnsImServer {

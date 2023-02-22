@@ -1,10 +1,9 @@
 package com.steven.cns.infra.common.wrapper;
 
 import com.steven.cns.infra.common.utils.MdcUtils;
+import org.slf4j.MDC;
 
 import java.util.concurrent.*;
-
-import org.slf4j.MDC;
 
 /**
  * @author steven.cao

@@ -1,7 +1,7 @@
 package com.steven.im.common.dispatcher;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public interface Message {
 }

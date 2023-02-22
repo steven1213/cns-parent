@@ -3,7 +3,7 @@ package com.steven.cns.log.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

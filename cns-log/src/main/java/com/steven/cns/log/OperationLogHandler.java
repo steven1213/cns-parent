@@ -3,7 +3,7 @@ package com.steven.cns.log;
 import com.steven.cns.log.model.OperationLogModel;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public interface OperationLogHandler {
 

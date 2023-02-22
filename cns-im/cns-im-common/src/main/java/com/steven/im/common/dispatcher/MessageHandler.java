@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public interface MessageHandler<T extends Message> {
 

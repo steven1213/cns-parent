@@ -1,7 +1,7 @@
 package com.steven.im.common.message;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public class CnsFileMsg extends CnsMsg {
 }

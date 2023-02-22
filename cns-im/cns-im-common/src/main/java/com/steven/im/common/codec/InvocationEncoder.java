@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public class InvocationEncoder extends MessageToByteEncoder<Invocation> {
     private static Gson gson = new Gson();

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public final class GsonUtils {
 

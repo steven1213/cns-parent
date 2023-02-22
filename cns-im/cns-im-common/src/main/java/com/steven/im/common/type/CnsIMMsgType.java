@@ -4,7 +4,7 @@ package com.steven.im.common.type;
 import lombok.Getter;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 @Getter
 public enum CnsIMMsgType {

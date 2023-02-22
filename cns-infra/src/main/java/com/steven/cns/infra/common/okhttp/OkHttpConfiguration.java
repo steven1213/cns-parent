@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public class OkHttpConfiguration {
 

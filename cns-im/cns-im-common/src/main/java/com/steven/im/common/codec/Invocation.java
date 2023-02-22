@@ -4,7 +4,7 @@ import com.steven.im.common.type.CnsIMMsgType;
 import lombok.Data;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 @Data
 public class Invocation {

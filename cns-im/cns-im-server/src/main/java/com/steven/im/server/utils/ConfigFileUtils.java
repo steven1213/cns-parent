@@ -2,7 +2,7 @@ package com.steven.im.server.utils;
 
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public final class ConfigFileUtils {
 
