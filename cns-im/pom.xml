@@ -18,8 +18,8 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <cns-im-client.version>0.0.1-SNAPSHOT</cns-im-client.version>
         <cns-im-server.version>0.0.1-SNAPSHOT</cns-im-server.version>
         <cns-im-common.version>0.0.1-SNAPSHOT</cns-im-common.version>
