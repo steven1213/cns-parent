@@ -3,6 +3,7 @@ package com.steven.cns.infra.common.po;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.steven.cns.infra.common.type.YesNoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,21 +30,22 @@ public class PO<T> implements Serializable {
     /**
      * 记录创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", locale = "zh_CN")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8", locale = "zh_CN")
     private Date crtTime;
 
 
     /**
      * 记录修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT", locale = "zh_CN")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8", locale = "zh_CN")
     private Date uptTime;
 
 
     /**
      * 删除标识 0-未删除 1-删除
+     * @see YesNoEnum
      */
-    private Short del;
+    private Short del = YesNoEnum.NO.getCode().shortValue();
 
 
 }

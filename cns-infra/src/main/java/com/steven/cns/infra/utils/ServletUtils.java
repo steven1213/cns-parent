@@ -51,7 +51,7 @@ public final class ServletUtils {
         try {
             response.setStatus(HttpStatus.OK.value());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+            response.setCharacterEncoding("utf-8");
             response.getWriter().write(str);
         } catch (IOException ex) {
             log.error("render string error.", ex);

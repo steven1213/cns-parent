@@ -7,6 +7,7 @@ import com.steven.cns.infra.utils.ServletUtils;
 import com.steven.cns.log.OperationLogHandler;
 import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.model.OperationLogModel;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
@@ -19,7 +20,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
