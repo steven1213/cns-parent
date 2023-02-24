@@ -1,5 +1,6 @@
 package com.steven.cns.log.aspect;
 
+import com.google.gson.Gson;
 import com.steven.cns.infra.utils.GsonUtils;
 import com.steven.cns.infra.utils.ServletUtils;
 import com.steven.cns.log.annotation.OperationLog;
@@ -15,9 +16,13 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author steven.cao
@@ -57,6 +62,19 @@ public class ReqLogAspect {
         ReqLog operationLog = getAnnotationLog(joinPoint);
         if (null == operationLog) {
             return null;
+        }
+        if (operationLog.printHeader()) {
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            ServletRequestAttributes attributes = (ServletRequestAttributes) requestAttributes;
+            HttpServletRequest request = attributes.getRequest();
+            Enumeration<String> headerNames = request.getHeaderNames();
+            Iterator<String> headerNamesIterator = headerNames.asIterator();
+            Map<String, String> headerMap = new HashMap<>();
+            while (headerNamesIterator.hasNext()) {
+                String headerName = headerNamesIterator.next();
+                headerMap.put(headerName, request.getHeader(headerName));
+            }
+            log.info("[ReqLog-Header]\n{}", GsonUtils.prettyPrint(headerMap));
         }
         ReqLogModel model = new ReqLogModel();
         handlerRequestUri(model);

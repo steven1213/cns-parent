@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/say")
-    @ReqLog
+    @ReqLog(printHeader = true)
     @OperationLog(appName = "test-app", module = "测试模块", description = "say方法")
     public Resp<Void> say() {
         return Resp.success();
