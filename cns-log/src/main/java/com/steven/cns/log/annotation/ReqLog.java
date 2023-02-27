@@ -9,5 +9,10 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Documented
 public @interface ReqLog {
+
+    /**
+     * 是否打印request header 默认不打印，若打印需设置为true
+     * @return
+     */
     boolean printHeader() default false;
 }

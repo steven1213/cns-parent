@@ -1,18 +1,20 @@
 package com.steven.cns.log;
 
 import com.steven.cns.log.model.OperationLogModel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author steven.cao
  */
-public interface OperationLogHandler {
+@Slf4j
+public class OperationLogHandler {
 
     /**
      * save operation log
      *
      * @param operationLogModel operationLogModel
      */
-    default void saveOperationLog(OperationLogModel operationLogModel) {
-        // nothing to do
+    public void saveOperationLog(OperationLogModel operationLogModel) {
+        log.info("do nothing");
     }
 }

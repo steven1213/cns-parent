@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * @author: steven
  * @date: 2023/2/22 23:27
  */
-@Component
 @Slf4j
-public class ExampleOperationLogHandler implements OperationLogHandler {
+public class ExampleOperationLogHandler extends OperationLogHandler {
+
     @Override
     public void saveOperationLog(OperationLogModel operationLogModel) {
         // nothing to do
