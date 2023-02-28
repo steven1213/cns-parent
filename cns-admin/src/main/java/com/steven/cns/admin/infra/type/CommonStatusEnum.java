@@ -21,9 +21,9 @@ public enum CommonStatusEnum implements BaseEnum {
     LOCKED(0, "锁定"),
     ;
 
-    private Integer code;
+    private final Integer code;
 
-    private String value;
+    private final String value;
 
     CommonStatusEnum(Integer code, String value) {
         this.code = code;
