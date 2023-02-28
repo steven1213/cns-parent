@@ -37,6 +37,7 @@ public class OperationLogAspect {
     @Value("${cns.operation.log.save-flag:false}")
     private boolean saveFlag;
 
+    private OperationLogHandler logHandler;
 
     @Pointcut("@annotation(com.steven.cns.log.annotation.OperationLog)")
     public void operationLogPointCut() {
@@ -60,10 +61,9 @@ public class OperationLogAspect {
         OperationLogModel logModel = assembleOperationLog(joinPoint, ex, o, operationLog);
 
         if (saveFlag) {
-            OperationLogHandler logHandler = new OperationLogHandler();
             logHandler.saveOperationLog(logModel);
         }
-        log.info("[OperationLog]:{}", GsonUtils.toJson(logModel));
+        log.info("[Operation-Log]:\n{}", GsonUtils.prettyPrint(logModel));
     }
 
     private OperationLogModel assembleOperationLog(JoinPoint joinPoint, Exception ex, Object o, OperationLog operationLog) {

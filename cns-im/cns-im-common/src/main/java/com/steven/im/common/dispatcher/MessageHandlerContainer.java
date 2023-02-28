@@ -28,9 +28,9 @@ public class MessageHandlerContainer implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        applicationContext.getBeansOfType(MessageHandler.class).values()
-                .forEach(messageHandler -> handlers.put(messageHandler.getMsgType(), messageHandler));
-        logger.info("[afterPropertiesSet][消息处理器数量:{}]", handlers.size());
+//        applicationContext.getBeansOfType(MessageHandler.class).values()
+//                .forEach(messageHandler -> handlers.put(messageHandler.getMsgType(), messageHandler));
+//        logger.info("[afterPropertiesSet][消息处理器数量:{}]", handlers.size());
     }
 
     protected MessageHandler getMessageHandler(CnsIMMsgType msgType) {
