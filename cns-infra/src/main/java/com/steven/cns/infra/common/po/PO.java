@@ -30,14 +30,12 @@ public class PO<T> implements Serializable {
     /**
      * 记录创建时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8", locale = "zh_CN")
     private Date crtTime;
 
 
     /**
      * 记录修改时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8", locale = "zh_CN")
     private Date uptTime;
 
 
