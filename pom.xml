@@ -43,7 +43,7 @@
         <netty.version>4.1.84.Final</netty.version>
         <config.version>1.3.0</config.version>
         <servlet-api.version>3.1.0</servlet-api.version>
-        <spring-cloud-dependencies.version>2022.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
         <guava.version>31.1-jre</guava.version>
     </properties>
 
@@ -94,21 +94,6 @@
                 <groupId>com.steven</groupId>
                 <artifactId>cns-log</artifactId>
                 <version>${cns-log.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.steven</groupId>
-                <artifactId>cns-pay</artifactId>
-                <version>${cns-pay.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.steven</groupId>
-                <artifactId>cns-live</artifactId>
-                <version>${cns-live.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.steven</groupId>
-                <artifactId>cns-sdk</artifactId>
-                <version>${cns-sdk.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -206,6 +191,7 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
