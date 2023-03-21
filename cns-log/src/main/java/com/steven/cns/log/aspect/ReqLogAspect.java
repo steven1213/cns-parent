@@ -2,7 +2,6 @@ package com.steven.cns.log.aspect;
 
 import com.steven.cns.infra.utils.GsonUtils;
 import com.steven.cns.infra.utils.ServletUtils;
-import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.annotation.ReqLog;
 import com.steven.cns.log.model.ReqLogModel;
 import lombok.extern.slf4j.Slf4j;
@@ -14,17 +13,16 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author steven.cao
@@ -46,7 +44,7 @@ public class ReqLogAspect {
             return;
         }
         Long end = System.currentTimeMillis();
-        log.info("[Req-Log]:耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.toJsonAllowNull(reqLogModel));
+        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.toJsonAllowNull(reqLogModel));
     }
 
     @AfterThrowing(pointcut = "reqLogPointCut()", throwing = "ex")
@@ -57,7 +55,7 @@ public class ReqLogAspect {
             return;
         }
         Long end = System.currentTimeMillis();
-        log.info("[ReqLog]:耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.prettyPrint(reqLogModel));
+        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.prettyPrint(reqLogModel));
     }
 
     private ReqLogModel handleReqLog(JoinPoint joinPoint, Exception ex, Object o) {
@@ -74,7 +72,7 @@ public class ReqLogAspect {
                 String headerName = headerNameIterator.next();
                 headerMap.put(headerName, request.getHeader(headerName));
             }
-            log.info("[ReqLog] header参数:{}", GsonUtils.toJson(headerMap));
+            log.info("[ReqLog]header参数:{}", GsonUtils.toJson(headerMap));
         }
 
         ReqLogModel model = new ReqLogModel();

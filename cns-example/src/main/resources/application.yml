@@ -4,3 +4,4 @@ cns:
   operation:
     log:
       save-flag: true
+      class: com.steven.cns.example.test.handler.ExampleOperatorLogHandler

@@ -8,6 +8,7 @@ import com.steven.cns.log.OperationLogHandler;
 import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.model.OperationLogModel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
@@ -37,7 +39,8 @@ public class OperationLogAspect {
     @Value("${cns.operation.log.save-flag:false}")
     private boolean saveFlag;
 
-    private OperationLogHandler logHandler;
+    @Resource
+    private OperationLogHandler operationLogHandler;
 
     @Pointcut("@annotation(com.steven.cns.log.annotation.OperationLog)")
     public void operationLogPointCut() {
@@ -61,9 +64,16 @@ public class OperationLogAspect {
         OperationLogModel logModel = assembleOperationLog(joinPoint, ex, o, operationLog);
 
         if (saveFlag) {
-            logHandler.saveOperationLog(logModel);
+            if (ObjectUtils.isNotEmpty(operationLogHandler)) {
+                operationLogHandler.saveOperationLog(logModel);
+            }
         }
-        log.info("[Operation-Log]:\n{}", GsonUtils.prettyPrint(logModel));
+        if (log.isInfoEnabled()) {
+            log.info("[OperationLog]:{}", GsonUtils.toJsonAllowNull(logModel));
+        } else {
+            log.info("[OperationLog]:\n{}", GsonUtils.prettyPrint(logModel));
+        }
+
     }
 
     private OperationLogModel assembleOperationLog(JoinPoint joinPoint, Exception ex, Object o, OperationLog operationLog) {
