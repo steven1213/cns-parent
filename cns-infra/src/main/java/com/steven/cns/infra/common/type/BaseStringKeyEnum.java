@@ -3,14 +3,13 @@ package com.steven.cns.infra.common.type;
 /**
  * @author steven.cao
  */
-public interface BaseEnum {
-
+public interface BaseStringKeyEnum {
     /**
      * 获取 code
      *
-     * @return Integer
+     * @return String
      */
-    Integer getCode();
+    String getCode();
 
     /**
      * 获取 name

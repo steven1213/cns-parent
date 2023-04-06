@@ -1,6 +1,6 @@
 package com.steven.cns.admin.infra.type;
 
-import com.steven.cns.infra.common.type.BaseEnum;
+import com.steven.cns.infra.common.type.BaseIntKeyEnum;
 import lombok.Getter;
 
 /**
@@ -8,7 +8,7 @@ import lombok.Getter;
  */
 
 @Getter
-public enum UserStatusEnum implements BaseEnum {
+public enum SysUserStatusEnum implements BaseIntKeyEnum {
 
     /**
      * 未激活
@@ -35,7 +35,7 @@ public enum UserStatusEnum implements BaseEnum {
 
     private String value;
 
-    UserStatusEnum(Integer code, String value) {
+    SysUserStatusEnum(Integer code, String value) {
         this.code = code;
         this.value = value;
     }

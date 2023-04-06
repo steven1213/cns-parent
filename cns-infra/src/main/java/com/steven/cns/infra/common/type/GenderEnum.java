@@ -3,7 +3,7 @@ package com.steven.cns.infra.common.type;
 import lombok.Getter;
 
 @Getter
-public enum GenderEnum implements BaseEnum {
+public enum GenderEnum implements BaseIntKeyEnum {
     /**
      * 0-女性
      */

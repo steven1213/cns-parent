@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import com.steven.cns.infra.common.resp.Resp;
 import com.steven.cns.infra.utils.GsonUtils;
 import com.steven.cns.infra.utils.ServletUtils;
-import com.steven.cns.log.OperationLogHandler;
+import com.steven.cns.log.handler.OperationLogHandler;
 import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.model.OperationLogModel;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
@@ -62,20 +61,23 @@ public class OperationLogAspect {
             return;
         }
         OperationLogModel logModel = assembleOperationLog(joinPoint, ex, o, operationLog);
-
+        // if saveFlag is true, save operation log
         if (saveFlag) {
             if (ObjectUtils.isNotEmpty(operationLogHandler)) {
                 operationLogHandler.saveOperationLog(logModel);
+            } else {
+                log.warn("[OperationLog]:The implementation class of the interface:OperationLogHandler was not found");
             }
         }
         if (log.isInfoEnabled()) {
             log.info("[OperationLog]:{}", GsonUtils.toJsonAllowNull(logModel));
         } else {
-            log.info("[OperationLog]:\n{}", GsonUtils.prettyPrint(logModel));
+            log.info("[OperationLog]:{}", GsonUtils.prettyPrint(logModel));
         }
 
     }
 
+    // assemble operation log
     private OperationLogModel assembleOperationLog(JoinPoint joinPoint, Exception ex, Object o, OperationLog operationLog) {
         OperationLogModel logModel = new OperationLogModel();
         handlerRequestUri(logModel);
@@ -86,11 +88,17 @@ public class OperationLogAspect {
         return logModel;
     }
 
+    // handler request uri
     private void handlerRequestUri(OperationLogModel logModel) {
         String uri = ServletUtils.getRequest().getRequestURI();
         logModel.setRequestUrl(uri);
     }
 
+    /**
+     * handler request error
+     * @param ex exception
+     * @param logModel logModel
+     */
     private void handlerRequestError(Exception ex, OperationLogModel logModel) {
         String requestError;
         if (Objects.nonNull(ex)) {

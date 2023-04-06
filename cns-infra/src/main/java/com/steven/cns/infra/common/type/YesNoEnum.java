@@ -7,7 +7,7 @@ import lombok.Getter;
  */
 
 @Getter
-public enum YesNoEnum implements BaseEnum {
+public enum YesNoEnum implements BaseIntKeyEnum {
 
     /**
      * 否.

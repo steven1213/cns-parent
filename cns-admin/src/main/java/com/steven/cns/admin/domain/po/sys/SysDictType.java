@@ -1,6 +1,5 @@
 package com.steven.cns.admin.domain.po.sys;
 
-import com.steven.cns.admin.infra.type.SysUserStatusEnum;
 import com.steven.cns.infra.common.po.PO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,27 +17,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class SysUser extends PO<SysUser> implements Serializable {
+public class SysDictType extends PO<SysDictType> implements Serializable {
 
-    /**
-     * 用户名
-     */
-    private String username;
+    private String dictName;
 
-    /**
-     * 密码
-     */
-    private String password;
+    private String dictType;
 
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
-     * 用户状态
-     *
-     * @see SysUserStatusEnum
-     */
     private Short status;
+
+    private String remark;
 }

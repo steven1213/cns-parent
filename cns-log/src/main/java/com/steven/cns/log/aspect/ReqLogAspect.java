@@ -14,6 +14,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -38,24 +39,26 @@ public class ReqLogAspect {
 
     @AfterReturning(pointcut = "reqLogPointCut()", returning = "result")
     public void doAfterReturning(JoinPoint joinPoint, Object result) {
-        Long begin = System.currentTimeMillis();
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         ReqLogModel reqLogModel = handleReqLog(joinPoint, null, result);
         if (Objects.isNull(reqLogModel)) {
             return;
         }
-        Long end = System.currentTimeMillis();
-        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.toJsonAllowNull(reqLogModel));
+        stopWatch.stop();
+        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", stopWatch.getTotalTimeMillis(), GsonUtils.toJsonAllowNull(reqLogModel));
     }
 
     @AfterThrowing(pointcut = "reqLogPointCut()", throwing = "ex")
     public void doAfterReturning(JoinPoint joinPoint, Exception ex) {
-        Long begin = System.currentTimeMillis();
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         ReqLogModel reqLogModel = handleReqLog(joinPoint, ex, null);
         if (Objects.isNull(reqLogModel)) {
             return;
         }
-        Long end = System.currentTimeMillis();
-        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", (end - begin), GsonUtils.prettyPrint(reqLogModel));
+        stopWatch.stop();
+        log.info("[ReqLog]耗时:[{}]ms,请求参数:{}", stopWatch.getTotalTimeMillis(), GsonUtils.prettyPrint(reqLogModel));
     }
 
     private ReqLogModel handleReqLog(JoinPoint joinPoint, Exception ex, Object o) {
@@ -65,7 +68,9 @@ public class ReqLogAspect {
         }
 
         if (operationLog.printHeader()) {
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+            HttpServletRequest request =
+                    ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
+                            .getRequest();
             Iterator<String> headerNameIterator = request.getHeaderNames().asIterator();
             Map<String, String> headerMap = new HashMap<>();
             while (headerNameIterator.hasNext()) {

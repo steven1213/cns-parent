@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  */
 public final class DateUtils {
 

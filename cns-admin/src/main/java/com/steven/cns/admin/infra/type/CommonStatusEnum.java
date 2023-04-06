@@ -1,6 +1,6 @@
 package com.steven.cns.admin.infra.type;
 
-import com.steven.cns.infra.common.type.BaseEnum;
+import com.steven.cns.infra.common.type.BaseIntKeyEnum;
 import lombok.Getter;
 
 /**
@@ -8,7 +8,7 @@ import lombok.Getter;
  */
 
 @Getter
-public enum CommonStatusEnum implements BaseEnum {
+public enum CommonStatusEnum implements BaseIntKeyEnum {
 
     /**
      * 正常 1

@@ -8,7 +8,10 @@
         <module>cns-admin</module>
         <module>cns-log</module>
         <module>cns-im</module>
+        <module>cns-auth2.0</module>
+        <module>cns-gateway</module>
         <module>cns-example</module>
+        <module>cns-push</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

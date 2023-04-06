@@ -1,6 +1,5 @@
 package com.steven.cns.admin.domain.po.sys;
 
-import com.steven.cns.admin.infra.type.SysUserStatusEnum;
 import com.steven.cns.infra.common.po.PO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,27 +17,25 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class SysUser extends PO<SysUser> implements Serializable {
+public class SysRole extends PO<SysRole> implements Serializable {
 
     /**
-     * 用户名
+     * roleCode.
      */
-    private String username;
+    private String roleCode;
 
     /**
-     * 密码
+     * roleName.
      */
-    private String password;
+    private String roleName;
 
     /**
-     * 头像
+     * parentId;
      */
-    private String avatar;
+    private Long parentId;
 
     /**
-     * 用户状态
-     *
-     * @see SysUserStatusEnum
+     * parentPath;
      */
-    private Short status;
+    private String parentPath;
 }
