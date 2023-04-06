@@ -12,6 +12,7 @@
         <module>cns-gateway</module>
         <module>cns-example</module>
         <module>cns-push</module>
+        <module>cns-agent</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -48,6 +49,7 @@
         <servlet-api.version>3.1.0</servlet-api.version>
         <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
         <guava.version>31.1-jre</guava.version>
+        <hutool.version>5.8.10</hutool.version>
     </properties>
 
 
@@ -57,7 +59,11 @@
 
     <dependencyManagement>
         <dependencies>
-
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
@@ -198,22 +204,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <excludes>-->
-<!--                        <exclude>-->
-<!--                            <groupId>org.projectlombok</groupId>-->
-<!--                            <artifactId>lombok</artifactId>-->
-<!--                        </exclude>-->
-<!--                    </excludes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-    </build>
 
 </project>
