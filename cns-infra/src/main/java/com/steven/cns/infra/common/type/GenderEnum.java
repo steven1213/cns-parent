@@ -2,6 +2,10 @@ package com.steven.cns.infra.common.type;
 
 import lombok.Getter;
 
+/**
+ * @author steven.cao
+ */
+
 @Getter
 public enum GenderEnum implements BaseIntKeyEnum {
     /**

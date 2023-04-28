@@ -21,7 +21,7 @@ public class Resp<T> implements Serializable {
     /**
      * 返回code.
      */
-    private Integer code;
+    private String code;
 
     /**
      * 返回msg.
@@ -39,6 +39,11 @@ public class Resp<T> implements Serializable {
     private String traceId;
 
     /**
+     * 是否成功
+     */
+    private boolean success;
+
+    /**
      * 返回数据
      */
     private T data;
@@ -47,7 +52,7 @@ public class Resp<T> implements Serializable {
         return failure(RespResult.FAILURE.getCode(), RespResult.FAILURE.getValue());
     }
 
-    public static <T> Resp<T> failure(Integer code, String msg) {
+    public static <T> Resp<T> failure(String code, String msg) {
         return generateResp(code, msg, null);
     }
 
@@ -59,19 +64,20 @@ public class Resp<T> implements Serializable {
         return success(RespResult.SUCCESS.getCode(), RespResult.SUCCESS.getValue(), data);
     }
 
-    public static <T> Resp<T> success(Integer code, String msg) {
+    public static <T> Resp<T> success(String code, String msg) {
         return success(code, msg, null);
     }
 
 
-    public static <T> Resp<T> success(Integer code, String msg, T data) {
+    public static <T> Resp<T> success(String code, String msg, T data) {
         return generateResp(code, msg, data);
     }
 
-    private static <T> Resp<T> generateResp(Integer code, String msg, T data) {
+    private static <T> Resp<T> generateResp(String code, String msg, T data) {
         return Resp.<T>builder()
                 .code(code)
                 .msg(msg)
+                .success(RespResult.SUCCESS.getCode().equals(code))
                 .timestamp(System.currentTimeMillis())
                 .traceId(MdcUtils.getTraceId())
                 .data(data)

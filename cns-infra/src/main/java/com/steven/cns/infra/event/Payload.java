@@ -14,7 +14,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Payload<T> implements Serializable {
+public class Payload implements Serializable {
 
-    private T data;
+    private String message;
+
 }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author steven.cao
@@ -16,5 +18,5 @@ import java.io.Serializable;
 @Builder
 public class EventContext implements Serializable  {
 
-    private Payload<?> payload;
+    private final Map<String,Object> attributes = new HashMap<>();
 }

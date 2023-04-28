@@ -50,6 +50,8 @@
         <spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>
         <guava.version>31.1-jre</guava.version>
         <hutool.version>5.8.10</hutool.version>
+        <jedis.version>3.7.0</jedis.version>
+        <redisson.version>3.16.1</redisson.version>
     </properties>
 
 
@@ -59,6 +61,17 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <!--redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>

@@ -3,14 +3,13 @@ package com.steven.cns.infra.event;
 /**
  * @author steven.cao
  */
-public interface EventHandler {
+public interface EventHandler<T extends Event, R> {
 
     /**
-     * 执行event
+     * handle event
      *
-     * @param context context
-     * @param <R>     返回
-     * @return R
+     * @param event event
+     * @return result
      */
-    <R> R execute(EventContext context);
+    R handle(T event);
 }

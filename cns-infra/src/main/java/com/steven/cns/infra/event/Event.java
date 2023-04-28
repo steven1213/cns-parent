@@ -17,15 +17,10 @@ import java.io.Serializable;
 @Builder
 public class Event<T> implements Serializable {
 
-    private EventContext eventContext;
+    private EventContext context;
 
-    private EventCode eventCode;
-    /**
-     * 有错误或是有警告时的信息
-     */
-    private String message;
+    private EventCode code;
 
-    private Boolean hasError = Boolean.FALSE;
+    private T payload;
 
-    private Boolean hasWarning = Boolean.FALSE;
 }

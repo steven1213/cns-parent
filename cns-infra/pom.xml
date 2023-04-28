@@ -19,11 +19,21 @@
 
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.glassfish.web</groupId>-->
-<!--            <artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
-<!--            <version>2.0.0</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.glassfish.web</groupId>-->
+        <!--            <artifactId>jakarta.servlet.jsp.jstl</artifactId>-->
+        <!--            <version>2.0.0</version>-->
+        <!--        </dependency>-->
+        <!--  jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+        <!--redisson-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>

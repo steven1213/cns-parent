@@ -1,22 +1,35 @@
 package com.steven.cns.infra.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
  * @author steven.cao
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class EventCode implements Serializable {
+@Getter
+public enum EventCode {
 
+    /**
+     * default event code
+     */
+    DEFAULT("DEFAULT", "DEFAULT"),
+
+    ;
+
+    /**
+     * module name
+     */
     private String module;
 
+    /**
+     * event name
+     */
     private String name;
+
+
+    EventCode(String module, String name) {
+        this.module = module;
+        this.name = name;
+    }
 }
