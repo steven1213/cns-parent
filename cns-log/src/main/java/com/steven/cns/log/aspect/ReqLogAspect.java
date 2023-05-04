@@ -1,7 +1,7 @@
 package com.steven.cns.log.aspect;
 
-import com.steven.cns.infra.utils.GsonUtils;
-import com.steven.cns.infra.utils.ServletUtils;
+import com.steven.cns.infra.common.utils.GsonUtils;
+import com.steven.cns.infra.common.utils.ServletUtils;
 import com.steven.cns.log.annotation.ReqLog;
 import com.steven.cns.log.model.ReqLogModel;
 import lombok.extern.slf4j.Slf4j;

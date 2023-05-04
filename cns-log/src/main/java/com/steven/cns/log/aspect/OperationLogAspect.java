@@ -2,8 +2,8 @@ package com.steven.cns.log.aspect;
 
 import com.google.gson.JsonObject;
 import com.steven.cns.infra.common.resp.Resp;
-import com.steven.cns.infra.utils.GsonUtils;
-import com.steven.cns.infra.utils.ServletUtils;
+import com.steven.cns.infra.common.utils.GsonUtils;
+import com.steven.cns.infra.common.utils.ServletUtils;
 import com.steven.cns.log.handler.OperationLogHandler;
 import com.steven.cns.log.annotation.OperationLog;
 import com.steven.cns.log.model.OperationLogModel;

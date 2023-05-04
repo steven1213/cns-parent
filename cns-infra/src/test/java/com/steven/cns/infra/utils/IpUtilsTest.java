@@ -1,5 +1,6 @@
 package com.steven.cns.infra.utils;
 
+import com.steven.cns.infra.common.utils.IpUtils;
 import junit.framework.TestCase;
 
 public class IpUtilsTest extends TestCase {

@@ -1,4 +1,4 @@
-package com.steven.cns.infra.utils;
+package com.steven.cns.infra.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

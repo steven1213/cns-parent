@@ -1,6 +1,6 @@
 package com.steven.cns.infra.common.okhttp;
 
-import com.steven.cns.infra.utils.GsonUtils;
+import com.steven.cns.infra.common.utils.GsonUtils;
 import lombok.NonNull;
 import okhttp3.*;
 
@@ -168,9 +168,7 @@ public class OkHttpUtils {
         Request.Builder builder = new Request.Builder().url(url);
         if (!Objects.isNull(parameters)) {
             FormBody.Builder formBuilder = new FormBody.Builder();
-            parameters.forEach((k, v) -> {
-                formBuilder.add(k, v);
-            });
+            parameters.forEach(formBuilder::add);
             builder.post(formBuilder.build());
         }
         if (!isEmptyMap(headerParameter)) {

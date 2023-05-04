@@ -1,4 +1,4 @@
-package com.steven.cns.infra.utils;
+package com.steven.cns.infra.common.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
