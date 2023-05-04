@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.steven.cns.auth.common.mapper.OAuthAccessTokenMapper">
+
+    <select id="findByTokenId" resultType="com.steven.cns.auth.common.entity.OAuthAccessToken">
+        select *
+        from oauth_access_token
+        where token_id = #{tokenId}
+    </select>
+
+    <delete id="deleteByTokenId">
+        delete
+        from oauth_access_token
+        where token_id = #{tokenId}
+    </delete>
+
+    <select id="findByRefreshTokenId" resultType="com.steven.cns.auth.common.entity.OAuthAccessToken">
+        select *
+        from oauth_access_token
+        where refresh_token_id = #{refreshTokenId}
+    </select>
+
+    <delete id="deleteByRefreshTokenId">
+        delete
+        from oauth_access_token
+        where refresh_token_id = #{refreshTokenId}
+    </delete>
+
+</mapper>
