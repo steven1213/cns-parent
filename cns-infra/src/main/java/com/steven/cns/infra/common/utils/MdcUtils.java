@@ -35,6 +35,14 @@ public final class MdcUtils {
         return MDC.get(CnsConstant.TRACE_ID);
     }
 
+    /**
+     * wrap callable
+     *
+     * @param callable callable
+     * @param context  context
+     * @param <T>      T
+     * @return Callable
+     */
     public static <T> Callable<T> wrap(final Callable<T> callable, final Map<String, String> context) {
         return () -> {
             if (null == context) {
@@ -53,6 +61,13 @@ public final class MdcUtils {
         };
     }
 
+    /**
+     * wrap runnable
+     *
+     * @param runnable runnable
+     * @param context  context
+     * @return Runnable
+     */
     public static Runnable wrap(final Runnable runnable, final Map<String, String> context) {
         return () -> {
             if (null == context) {

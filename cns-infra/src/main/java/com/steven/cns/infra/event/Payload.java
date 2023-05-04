@@ -1,9 +1,6 @@
 package com.steven.cns.infra.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -11,11 +8,16 @@ import java.io.Serializable;
  * @author steven.cao
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class Payload implements Serializable {
+public abstract class Payload<T> implements Serializable {
 
-    private String message;
+    private final T data;
+
+
+    /**
+     * get type
+     *
+     * @return type
+     */
+    public abstract String getType();
 
 }

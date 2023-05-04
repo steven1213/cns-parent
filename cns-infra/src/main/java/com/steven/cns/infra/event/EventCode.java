@@ -18,18 +18,27 @@ public enum EventCode {
     ;
 
     /**
-     * module name
+     * code code
      */
-    private String module;
+    private String code;
 
     /**
-     * event name
+     * desc desc
      */
-    private String name;
+    private String desc;
 
 
-    EventCode(String module, String name) {
-        this.module = module;
-        this.name = name;
+    EventCode(String code, String desc) {
+        this.code = code;
+        this.desc = desc;
+    }
+
+    public static EventCode fromCode(String code) {
+        for (EventCode eventCode : EventCode.values()) {
+            if (eventCode.getCode().equals(code)) {
+                return eventCode;
+            }
+        }
+        throw new IllegalArgumentException("unknown event code: " + code);
     }
 }

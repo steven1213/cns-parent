@@ -1,26 +1,30 @@
 package com.steven.cns.infra.event;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @author steven.cao
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class Event<T> implements Serializable {
 
-    private EventContext context;
+    private final LocalDateTime timestamp;
 
-    private EventCode code;
+    private final EventCode eventCode;
 
-    private T payload;
+    private final T payload;
 
+    private final EventContext context;
+
+    public Event(EventCode eventCode, T payload, EventContext context) {
+        this.timestamp = LocalDateTime.now();
+        this.eventCode = eventCode;
+        this.context = context;
+        this.payload = payload;
+    }
 }

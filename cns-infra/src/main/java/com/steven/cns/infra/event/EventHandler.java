@@ -3,7 +3,7 @@ package com.steven.cns.infra.event;
 /**
  * @author steven.cao
  */
-public interface EventHandler<T extends Event, R> {
+public interface EventHandler<T, R> {
 
     /**
      * handle event
@@ -11,5 +11,5 @@ public interface EventHandler<T extends Event, R> {
      * @param event event
      * @return result
      */
-    R handle(T event);
+    R handleEvent(Event<T> event);
 }
