@@ -18,12 +18,16 @@ public final class MdcUtils {
 
     /**
      * 如果不存在则设置traceId.
+     *
+     * @return String
      */
-    public static void setTraceIdIfAbsent() {
+    public static String setTraceIdIfAbsent() {
         String traceId = MDC.get(CnsConstant.TRACE_ID);
         if (StringUtils.isBlank(traceId)) {
-            MDC.put(CnsConstant.TRACE_ID, UUID.randomUUID().toString());
+            traceId = UUID.randomUUID().toString();
+            MDC.put(CnsConstant.TRACE_ID, traceId);
         }
+        return traceId;
     }
 
     /**
