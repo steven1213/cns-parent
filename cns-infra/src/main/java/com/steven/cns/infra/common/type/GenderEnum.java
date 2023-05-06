@@ -7,7 +7,7 @@ import lombok.Getter;
  */
 
 @Getter
-public enum GenderEnum implements BaseIntKeyEnum {
+public enum GenderEnum implements CodeEnum<Integer> {
     /**
      * 0-女性
      */

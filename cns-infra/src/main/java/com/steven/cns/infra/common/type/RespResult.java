@@ -7,7 +7,7 @@ import lombok.Getter;
  */
 
 @Getter
-public enum RespResult implements BaseStringKeyEnum {
+public enum RespResult implements CodeEnum<String> {
 
     /**
      * success code.

@@ -54,6 +54,7 @@
         <redisson.version>3.16.1</redisson.version>
         <spring-cloud-starter-feign.version>3.0.3</spring-cloud-starter-feign.version>
         <flyway.version>7.14.0</flyway.version>
+        <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
     </properties>
 
 
@@ -63,6 +64,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>jakarta.persistence</groupId>
+                <artifactId>jakarta.persistence-api</artifactId>
+                <version>${jakarta.persistence.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>
