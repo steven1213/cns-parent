@@ -26,6 +26,35 @@ import java.util.Objects;
 
 /**
  * @author steven.cao
+ * usage:
+ * @Component
+ * public class MyOperatorLogHandler implements OperatorLogHandler {
+ *
+ *     private final Logger logger = LoggerFactory.getLogger(MyOperatorLogHandler.class);
+ *
+ *     @Override
+ *     public void saveOperatorLog(String message) {
+ *         logger.info("Save operator log: {}", message);
+ *     }
+ *
+ * }
+ *最后，在Spring中配置OperatorLogAspect类和OperatorLogHandler实现类的Bean，如下所示：
+ *
+ * @Configuration
+ * public class OperatorLogConfig {
+ *
+ *     @Bean
+ *     public OperatorLogAspect operatorLogAspect(OperatorLogHandler operatorLogHandler) {
+ *         return new OperatorLogAspect(operatorLogHandler);
+ *     }
+ *
+ *     @Bean
+ *     public MyOperatorLogHandler myOperatorLogHandler() {
+ *         return new MyOperatorLogHandler();
+ *     }
+ *
+ * }
+ *
  */
 @Slf4j
 @Aspect
@@ -38,8 +67,11 @@ public class OperationLogAspect {
     @Value("${cns.operation.log.save-flag:false}")
     private boolean saveFlag;
 
-    @Resource
-    private OperationLogHandler operationLogHandler;
+    private final OperationLogHandler operationLogHandler;
+
+    private OperationLogAspect(OperationLogHandler operationLogHandler) {
+        this.operationLogHandler = operationLogHandler;
+    }
 
     @Pointcut("@annotation(com.steven.cns.log.annotation.OperationLog)")
     public void operationLogPointCut() {
@@ -63,11 +95,11 @@ public class OperationLogAspect {
         OperationLogModel logModel = assembleOperationLog(joinPoint, ex, o, operationLog);
         // if saveFlag is true, save operation log
         if (saveFlag) {
-            if (ObjectUtils.isNotEmpty(operationLogHandler)) {
-                operationLogHandler.saveOperationLog(logModel);
-            } else {
-                log.warn("[OperationLog]:The implementation class of the interface:OperationLogHandler was not found");
+            if (null == operationLogHandler) {
+                log.error("operationLogHandler is null");
+                throw new RuntimeException("OperationLogHandler is null");
             }
+            operationLogHandler.saveOperationLog(logModel);
         }
         if (log.isInfoEnabled()) {
             log.info("[OperationLog]:{}", GsonUtils.toJsonAllowNull(logModel));
@@ -96,7 +128,8 @@ public class OperationLogAspect {
 
     /**
      * handler request error
-     * @param ex exception
+     *
+     * @param ex       exception
      * @param logModel logModel
      */
     private void handlerRequestError(Exception ex, OperationLogModel logModel) {
