@@ -4,7 +4,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 /**
- * @author dr.panda
+ * @author steven.cao
  * useage:
  * @Data
  * @Entity

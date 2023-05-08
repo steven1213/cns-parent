@@ -1,35 +1,36 @@
 package com.steven.cns.infra.common.type;
 
+import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 /**
- * @author dr.panda
+ * @author steven.cao
  */
-public class CodeEnumUtil {
+public final class CodeEnumUtil {
+    private static final Map<Class<? extends CodeEnum<?>>, Map<Object, ? extends CodeEnum<?>>> CODE_ENUM_MAP = new ConcurrentHashMap<>();
+
     private CodeEnumUtil() {
+        throw new UnsupportedOperationException();
     }
 
-    /**
-     * 通过 code 获取对应的枚举
-     *
-     * @param enumType 枚举类型
-     * @param code     枚举的 code 值
-     * @param <T>      枚举泛型
-     * @return 枚举值
-     */
-    public static <T extends CodeEnum<?>> T getByCode(Class<T> enumType, Object code) {
-        if (code == null) {
-            return null;
-        }
-        if (!CodeEnum.class.isAssignableFrom(enumType)) {
-            throw new IllegalArgumentException("Class [" + enumType.getName() + "] must implement interface [CodeEnum]");
+    public static <T extends CodeEnum<?>> T getByCode(Class<T> enumClass, Object code) {
+        if (!enumClass.isEnum()) {
+            throw new IllegalArgumentException(enumClass + " is not an enum type");
         }
 
-        for (T e : enumType.getEnumConstants()) {
-            if (e.getCode().equals(code)) {
-                return e;
+        if (!CODE_ENUM_MAP.containsKey(enumClass)) {
+            synchronized (enumClass) {
+                if (!CODE_ENUM_MAP.containsKey(enumClass)) {
+                    Map<Object, ? extends CodeEnum<?>> map = Arrays.stream(enumClass.getEnumConstants())
+                            .collect(Collectors.toMap(CodeEnum::getCode, Function.identity()));
+                    CODE_ENUM_MAP.put(enumClass, map);
+                }
             }
         }
-
-        throw new IllegalArgumentException("Cannot convert " + code + " to " + enumType.getSimpleName() + " by code value.");
+        return (T) CODE_ENUM_MAP.get(enumClass).get(code);
     }
 }
 

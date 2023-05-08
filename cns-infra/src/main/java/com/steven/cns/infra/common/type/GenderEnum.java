@@ -1,13 +1,14 @@
 package com.steven.cns.infra.common.type;
 
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author steven.cao
  */
 
 @Getter
-public enum GenderEnum implements CodeEnum<Integer> {
+public enum GenderEnum implements IntegerCodeEnum {
     /**
      * 0-女性
      */

@@ -5,9 +5,8 @@ import lombok.Getter;
 /**
  * @author steven.cao
  */
-
 @Getter
-public enum YesNoEnum implements CodeEnum<Integer> {
+public enum YesNoEnum implements IntegerCodeEnum {
 
     /**
      * 否.

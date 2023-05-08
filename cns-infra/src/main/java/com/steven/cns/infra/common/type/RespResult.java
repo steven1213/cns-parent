@@ -1,13 +1,13 @@
 package com.steven.cns.infra.common.type;
 
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author steven.cao
  */
-
 @Getter
-public enum RespResult implements CodeEnum<String> {
+public enum RespResult implements StringCodeEnum {
 
     /**
      * success code.
