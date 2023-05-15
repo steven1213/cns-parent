@@ -12,6 +12,7 @@
         <module>cns-gateway</module>
         <module>cns-example</module>
         <module>cns-push</module>
+        <module>cns-mqtt</module>
         <module>cns-agent</module>
     </modules>
     <parent>
