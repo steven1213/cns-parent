@@ -37,24 +37,24 @@ public class CnsRedisProperties {
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class CnsRedisPool{
-        private int maxIdle;
+    public static class CnsRedisPool {
+        private int maxIdle = 8;
 
-        private int minIdle;
+        private int minIdle = 0;
 
-        private int maxTotal;
+        private int maxTotal = 100;
 
-        private int maxWaitMillis;
+        private int maxWaitMillis = 10000;
 
-        private boolean testOnBorrow;
+        private boolean testOnBorrow = true;
 
-        private boolean testOnReturn;
+        private boolean testOnReturn = true;
 
-        private boolean testWhileIdle;
+        private boolean testWhileIdle = true;
 
-        private int timeBetweenEvictionRunsMillis;
+        private int timeBetweenEvictionRunsMillis = 30000;
 
-        private int numTestsPerEvictionRun;
+        private int numTestsPerEvictionRun = -1;
 
         private int minEvictableIdleTimeMillis;
 
@@ -74,6 +74,7 @@ public class CnsRedisProperties {
         private int port;
 
     }
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -83,6 +84,7 @@ public class CnsRedisProperties {
 
         private String nodes;
     }
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
