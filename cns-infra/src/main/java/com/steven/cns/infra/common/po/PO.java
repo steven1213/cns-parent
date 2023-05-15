@@ -2,7 +2,6 @@ package com.steven.cns.infra.common.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.steven.cns.infra.common.type.YesNoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

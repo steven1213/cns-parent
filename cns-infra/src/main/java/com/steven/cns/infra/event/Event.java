@@ -1,7 +1,6 @@
 package com.steven.cns.infra.event;
 
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;

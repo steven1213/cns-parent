@@ -1,11 +1,9 @@
 package com.steven.cns.infra.common.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.params.SetParams;
 
 import java.util.List;
 import java.util.Map;

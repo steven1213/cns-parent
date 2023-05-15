@@ -1,8 +1,6 @@
 package com.steven.cns.infra.event;
 
-import lombok.*;
-
-import java.io.Serializable;
+import lombok.Getter;
 
 /**
  * @author steven.cao

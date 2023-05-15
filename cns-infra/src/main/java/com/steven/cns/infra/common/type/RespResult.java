@@ -1,7 +1,6 @@
 package com.steven.cns.infra.common.type;
 
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 /**
  * @author steven.cao

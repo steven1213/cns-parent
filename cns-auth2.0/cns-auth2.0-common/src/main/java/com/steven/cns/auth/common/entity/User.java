@@ -1,6 +1,5 @@
 package com.steven.cns.auth.common.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

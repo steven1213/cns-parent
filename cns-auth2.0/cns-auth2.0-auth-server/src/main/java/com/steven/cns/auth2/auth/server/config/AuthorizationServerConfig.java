@@ -1,8 +1,6 @@
 package com.steven.cns.auth2.auth.server.config;
 
 import com.steven.cns.auth2.auth.server.service.UserDetailsService;
-import com.steven.cns.auth2.auth.server.service.impl.UserDetailsServiceImpl;
-import com.steven.cns.auth2.auth.server.service.token.CustomTokenEnhancer;
 import com.steven.cns.auth2.auth.server.service.token.CustomTokenServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +14,6 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-
-import java.util.Arrays;
 
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
