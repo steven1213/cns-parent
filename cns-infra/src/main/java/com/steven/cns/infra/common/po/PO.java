@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.steven.cns.infra.common.type.YesNoEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -43,6 +44,7 @@ public class PO<T> implements Serializable {
      * 删除标识 0-未删除 1-删除
      * @see YesNoEnum
      */
+    @Builder.Default
     private Short del = YesNoEnum.NO.getCode().shortValue();
 
 
